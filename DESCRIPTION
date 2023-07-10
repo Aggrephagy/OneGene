@@ -1,0 +1,27 @@
+Package: OneGene
+Title: Easy deal with the TCGA data based on one gene!
+Version: 0.0.0
+Authors@R: 
+    person("Peng Xia", "Last", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Easy deal with the TCGA data based on one gene!
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.2
+LazyData: true
+Depends:
+	R(>= 3.6.0)
+Imports:
+	tidyverse,
+	UCSCXenaTools,
+	IOBR,
+	clusterProfiler,
+	ggplot2,
+	ggpubr,
+	GSVA,
+	org.Hs.eg.db,
+	enrichplot
+	
+	
