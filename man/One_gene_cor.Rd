@@ -2,7 +2,7 @@
 % Please edit documentation in R/One_gene_cor.R
 \name{One_gene_cor}
 \alias{One_gene_cor}
-\title{One_gene_cor}
+\title{title One_gene_cor}
 \usage{
 One_gene_cor(expr, gene, p.threshold = 0.05, parallel = FALSE)
 }

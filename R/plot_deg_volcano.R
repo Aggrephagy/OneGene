@@ -1,4 +1,4 @@
-#' @Title plot_deg_volcano
+#' Title plot_deg_volcano
 #'
 #' @param plot_data
 #' @param logFC_name

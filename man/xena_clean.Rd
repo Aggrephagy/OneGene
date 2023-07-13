@@ -2,7 +2,7 @@
 % Please edit documentation in R/xena_clean.R
 \name{xena_clean}
 \alias{xena_clean}
-\title{xena_clean}
+\title{title xena_clean}
 \usage{
 xena_clean(Rdata.path, project, data_type = "counts")
 }
@@ -10,7 +10,7 @@ xena_clean(Rdata.path, project, data_type = "counts")
 \item{data_type}{}
 }
 \description{
-xena_clean
+title xena_clean
 }
 \examples{
 xena_clean(Rdata.path = "./output_xena/counts_xena_LUAD.Rdata",project = 'LUAD',data_type = 'counts')

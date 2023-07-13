@@ -1,4 +1,4 @@
-#' @Title plot_geneCor
+#' Title plot_geneCor
 #'
 #' @param expr
 #' @param gene1

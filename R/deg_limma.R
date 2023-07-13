@@ -1,4 +1,4 @@
-#' @Title deg_limma
+#' Title deg_limma
 #'
 #' @param expr
 #' @param group_info

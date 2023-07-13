@@ -1,4 +1,4 @@
-#' @Title plot_ScRNA_reducion
+#' Title plot_ScRNA_reducion
 #'
 #' @param scRNA A seurat object
 #' @param reduction umap tsne

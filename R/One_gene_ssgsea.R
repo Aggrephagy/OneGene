@@ -1,4 +1,4 @@
-#' @Title One_gene_ssgsea
+#' Title One_gene_ssgsea
 #'
 #' @param gene
 #' @param expr

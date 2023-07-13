@@ -1,4 +1,4 @@
-#' @title One_gene_cor
+#' title One_gene_cor
 #' @description To calculate correlation with others for one gene.
 #' @param expr
 #' @param gene

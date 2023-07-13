@@ -1,4 +1,4 @@
-#' @title One_gene_deg
+#' title One_gene_deg
 #' @description  To caculate the differtial expressed gene by limma.
 #' @param expr
 #' @param gene

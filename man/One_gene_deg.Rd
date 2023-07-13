@@ -2,7 +2,7 @@
 % Please edit documentation in R/One_gene_deg.R
 \name{One_gene_deg}
 \alias{One_gene_deg}
-\title{One_gene_deg}
+\title{title One_gene_deg}
 \usage{
 One_gene_deg(expr, gene, p = 0.05, logfc = 1)
 }
