@@ -13,7 +13,7 @@
 #' @examples plot_umap(scRNA = scRNA,plot.column = "group",label = F)
 plot_scRNA_reducion <- function(scRNA,reduction='umap',plot.column="seurat_clusters",
                       label=T,label.text.size=6,
-                      cellcolors=c("#8B0000","#E18727FF","#0072B5FF","#800080","#BC3C29FF","#20854EFF")) {
+                      cellcolors=c("#3B4992FF", "#EE0000FF", "#008B45FF", "#631879FF", "#008280FF", "#BB0021FF", "#5F559BFF", "#A20056FF", "#808180FF", "#1B1919FF")) {
   # https://mp.weixin.qq.com/s/5euLsq08ckP_-WDE819K1Q
   library(tidyverse)
   library(cowplot)
