@@ -20,7 +20,6 @@ plot_scRNA_dotplot <- function(scRNA,features,legend.position = "right",
     guides(color = guide_colorbar(title = 'Scaled Average Expression')) +
     coord_flip() +
     theme(legend.position = legend.position,
-          plot.margin = margin(r = 0),
           legend.title  = element_text (size = 10),
           panel.border = element_rect(color = "black", fill = NA, size = 1.5),
           # 显示主网格线
@@ -31,5 +30,3 @@ plot_scRNA_dotplot <- function(scRNA,features,legend.position = "right",
     scale_y_discrete(position = "right")+
     labs(title=plot.title,x=title.x,y=title.y)
 }
-
-
