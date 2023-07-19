@@ -17,12 +17,14 @@ plot_scRNA_featureplot <- function(data, plot.gene = NULL, pal = NULL,
                                    X.title = NULL,
                                    y.title = NULL,
                                    pt.size = 1) {
-  library(ggplot2)
-  library(aplot)
-  if (!require(viridis) || !require(Seurat)) {
-    library(viridis)
-    library(Seurat)
-  }
+
+  # if(! require('meme')){install.packages("meme",ask = F,suppressUpdates = T)}
+  # if(! require('yyplot')){devtools::install_github("GuangchuangYu/yyplot",ask = F,suppressUpdates = T)}
+  if(! require('aplot')){remotes::install_github("YuLab-SMU/aplot",ask = F,suppressUpdates = T)}
+  if(! require('viridis')){install.packages("viridis",ask = F,suppressUpdates = T)}
+  if(! require('Seurat')){install.packages("Seurat",ask = F,suppressUpdates = T)}
+  if(! require('ggplot2')){install.packages("ggplot2",ask = F,suppressUpdates = T)}
+  if(! require('tidyverse')){install.packages("tidyverse",ask = F,suppressUpdates = T)}
 
   if (is.null(pal)) {
     pal <- viridis(n = 3, option =  pal.style)
@@ -31,8 +33,6 @@ plot_scRNA_featureplot <- function(data, plot.gene = NULL, pal = NULL,
   }
 
   # 字体
-  windowsFonts(A = windowsFont("Times New Roman"),
-               B = windowsFont("Arial"))
   if (length(plot.gene) > 1) {
     gene_to_plot <- plot.gene
     p <- list()
@@ -42,7 +42,7 @@ plot_scRNA_featureplot <- function(data, plot.gene = NULL, pal = NULL,
                             pt.size = pt.size, blend = F) +
         theme_test() +
         guides(fill = guide_legend(override.aes = list(size = 3, alpha = 1))) +
-        theme(text = element_text(family = "B", face = "bold"),
+        theme(text = element_text(family="Arial", face="italic"),
               title = element_text(size = 16),
               plot.title = element_text(hjust = 0.5),
               axis.title = element_text(size = 16),
@@ -63,7 +63,7 @@ plot_scRNA_featureplot <- function(data, plot.gene = NULL, pal = NULL,
                 pt.size = pt.size, blend = plot.blend) +
       theme_test() +
       guides(fill = guide_legend(override.aes = list(size = 3, alpha = 1))) +
-      theme(text = element_text(family = "B", face = "bold"),
+      theme(text = element_text(family="Arial", face="italic"),
             title = element_text(size = 16),
             plot.title = element_text(hjust = 0.5),
             axis.title = element_text(size = 16),
