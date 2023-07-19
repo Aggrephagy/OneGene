@@ -60,7 +60,7 @@ plot_scRNA_featureplot <- function(data, plot.gene = NULL, pal = NULL,
     # 绘图
     FeaturePlot(object = data, features = plot.gene, cols = pal,
                 order = TRUE, min.cutoff = 1, max.cutoff = 3,
-                pt.size = pt.size, blend = plot.blend) +
+                pt.size = pt.size, blend = F) +
       theme_test() +
       guides(fill = guide_legend(override.aes = list(size = 3, alpha = 1))) +
       theme(text = element_text(family="Arial", face="italic"),
