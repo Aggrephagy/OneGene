@@ -10,11 +10,12 @@
 #'
 #' @examples
 plot_scRNA_volcano <- function(data,plot.gene=NULL,plot.gene.number = 5,
-                               label.text.size=10) {
+                               label.text.size=10,logfc.cut=1,p.cut=0.05) {
   library(tidyverse)
   library(ggrepel)
   options(ggrepel.max.overlaps = Inf)
 
+  data <- data %>% mutate('gene'=row.names(.))
   data <- data %>% select(gene,avg_log2FC, p_val, pct.1, pct.2) %>%
     mutate(diff_pct = pct.1 - pct.2) %>%
     mutate(group = if_else(p_val < 0.05 & avg_log2FC > 1, "sig_up",
@@ -25,10 +26,10 @@ plot_scRNA_volcano <- function(data,plot.gene=NULL,plot.gene.number = 5,
     up_gene <- data %>% arrange(desc(diff_pct)) %>% .[,'gene'] %>% c() %>% .[1:plot.gene.number]
 
     # 前五个下调
-    down_10 <- data %>% arrange(diff_pct) %>% .[,'gene'] %>% c() %>% .[1:plot.gene.number]
+    down_gene <- data %>% arrange(diff_pct) %>% .[,'gene'] %>% c() %>% .[1:plot.gene.number]
 
     # 标记基因
-    gene_label <- c(up_10,down_10)
+    gene_label <- c(up_gene,down_gene)
 
     # 索引基因位置
     index <- match(gene_label,data$gene)
