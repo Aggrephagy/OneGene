@@ -13,7 +13,7 @@ plot_scRNA_volcano(
   p.cut = 0.05,
   label_postion_x_left = -2.5,
   label_postion_x_right = 2.5,
-  label_postion_y = 0.95,
+  label_postion_y = 0.1,
   base_size = 14,
   legend_size = 14,
   legend_position = "top"
