@@ -8,12 +8,15 @@ plot_scRNA_volcano(
   data,
   plot.gene = NULL,
   plot.gene.number = 5,
-  label.text.size = 10,
+  label.text.size = 80,
   logfc.cut = 1,
   p.cut = 0.05,
-  label_postion_x_left = -4,
-  label_postion_x_right = 4,
-  red_label_postion_y = 0.55
+  label_postion_x_left = -2.5,
+  label_postion_x_right = 2.5,
+  label_postion_y = 0.95,
+  base_size = 14,
+  legend_size = 14,
+  legend_position = "top"
 )
 }
 \arguments{

@@ -9,11 +9,15 @@
 #' @export
 #'
 #' @examples
+#'
 plot_scRNA_volcano <- function(data,plot.gene=NULL,plot.gene.number = 5,
-                               label.text.size=10,logfc.cut=1,p.cut=0.05,
-                               label_postion_x_left = -4,
-                               label_postion_x_right = 4,
-                               red_label_postion_y = 0.55
+                               label.text.size=80,logfc.cut=1,p.cut=0.05,
+                               label_postion_x_left = -2.5,
+                               label_postion_x_right = 2.5,
+                               label_postion_y = 0.95,
+                               base_size = 14,
+                               legend_size = 14,
+                               legend_position = 'top'
                                ) {
   library(tidyverse)
   library(ggrepel)
@@ -27,10 +31,10 @@ plot_scRNA_volcano <- function(data,plot.gene=NULL,plot.gene.number = 5,
     mutate('label' = NA)
   if (is.null(plot.gene)) {
     # 前五个上调
-    up_gene <- data %>% arrange(desc(diff_pct)) %>% .[,'gene'] %>% c() %>% .[1:plot.gene.number]
+    up_gene <- data %>% arrange(desc(avg_log2FC)) %>% .[,'gene'] %>% c() %>% .[1:plot.gene.number]
 
     # 前五个下调
-    down_gene <- data %>% arrange(diff_pct) %>% .[,'gene'] %>% c() %>% .[1:plot.gene.number]
+    down_gene <- data %>% arrange(avg_log2FC) %>% .[,'gene'] %>% c() %>% .[1:plot.gene.number]
 
     # 标记基因
     gene_label <- c(up_gene,down_gene)
@@ -75,11 +79,14 @@ plot_scRNA_volcano <- function(data,plot.gene=NULL,plot.gene.number = 5,
     ###指定分类颜色
     theme_test()+
     ####设置标题位置及字体大小
-    theme(legend.position = "top",legend.title = element_blank())+
+    theme(text = element_text(size = base_size),
+          legend.text = element_text(size = legend_size),
+          legend.position = legend_position,
+          legend.title = element_blank())+
     ###添加文本注释
-    annotate('text',x= label_postion_x_left,y=red_label_postion_y*max(-log10(data$pvalue)),fontface="bold.italic",size=4,color='red',
+    annotate('text',x= label_postion_x_left,y=label_postion_y*max(-log10(data$pvalue)),fontface="bold.italic",size=4,color='red',
              label='Genes \n Down Regulated')+
-    annotate('text',x= label_postion_x_right,y=red_label_postion_y*max(-log10(data$pvalue)),fontface="bold.italic",size=4,color='red',
+    annotate('text',x= label_postion_x_right,y=label_postion_y*max(-log10(data$pvalue)),fontface="bold.italic",size=4,color='red',
              label='Genes \n  Up Regulated')
 }
 
