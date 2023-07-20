@@ -87,7 +87,7 @@ run_scRNA_CellChat <- function(data, idents = 'celltype',
   }
 
   # 保存文件
-  plan(sequential)#恢复单线程
+  # plan(sequential)#恢复单线程
   path_to_save <- file.path(path, name)
   save(cellchat, file = path_to_save)
 
