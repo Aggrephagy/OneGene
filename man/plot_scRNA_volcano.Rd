@@ -10,7 +10,10 @@ plot_scRNA_volcano(
   plot.gene.number = 5,
   label.text.size = 10,
   logfc.cut = 1,
-  p.cut = 0.05
+  p.cut = 0.05,
+  label_postion_x_left = -4,
+  label_postion_x_right = 4,
+  red_label_postion_y = 0.55
 )
 }
 \arguments{

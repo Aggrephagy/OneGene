@@ -11,7 +11,8 @@
 #' @examples
 plot_scRNA_volcano <- function(data,plot.gene=NULL,plot.gene.number = 5,
                                label.text.size=10,logfc.cut=1,p.cut=0.05,
-                               red_label_postion_x = -4,
+                               label_postion_x_left = -4,
+                               label_postion_x_right = 4,
                                red_label_postion_y = 0.55
                                ) {
   library(tidyverse)
@@ -76,8 +77,9 @@ plot_scRNA_volcano <- function(data,plot.gene=NULL,plot.gene.number = 5,
     ####设置标题位置及字体大小
     theme(legend.position = "top",legend.title = element_blank())+
     ###添加文本注释
-    annotate('text',x=red_label_postion_x,y=red_label_postion_y*max(-log10(data$pvalue)),fontface="bold.italic",size=4,color='red',
+    annotate('text',x= label_postion_x_left,y=red_label_postion_y*max(-log10(data$pvalue)),fontface="bold.italic",size=4,color='red',
              label='Genes \n Down Regulated')+
-    annotate('text',x=red_label_postion_x,y=red_label_postion_y*max(-log10(data$pvalue)),fontface="bold.italic",size=4,color='red',
+    annotate('text',x= label_postion_x_right,y=red_label_postion_y*max(-log10(data$pvalue)),fontface="bold.italic",size=4,color='red',
              label='Genes \n  Up Regulated')
 }
+
