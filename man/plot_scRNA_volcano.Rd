@@ -8,7 +8,9 @@ plot_scRNA_volcano(
   data,
   plot.gene = NULL,
   plot.gene.number = 5,
-  label.text.size = 10
+  label.text.size = 10,
+  logfc.cut = 1,
+  p.cut = 0.05
 )
 }
 \arguments{
