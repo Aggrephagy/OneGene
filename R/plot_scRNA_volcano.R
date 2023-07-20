@@ -3,13 +3,22 @@
 #' @param data A seurat object
 #' @param plot.gene A vector including gene to plot in the volcano plot
 #' @param plot.gene.number The default will display the top 5 up and down regulated genes
-#' @param label.text.size The size of the gene, default is 10
+#' @param label.text.size The size of the gene, default is 80
+#' @param logfc.cut The threshold of the locfc, the default is 1
+#' @param p.cut The threshold of the pvalue, the default is 0.05
+#' @param label.diff_pct Whether to use the pct.1 - pct.2 (diff_pct) as the label
+#' @param diff_pct.cutoff The diff_pct threshold
+#' @param label_postion_x_left The axis x position of the label in left
+#' @param label_postion_x_right The axis x position of the label in right
+#' @param label_postion_y The axis y position
+#' @param base_size The text size, the default is 14
+#' @param legend_size The legend size, the default is 14
+#' @param legend_position The legend position, the default is 'top'
 #'
 #' @return
 #' @export
 #'
 #' @examples
-#'
 plot_scRNA_volcano <- function(data,plot.gene=NULL,plot.gene.number = 5,
                                label.text.size=80,logfc.cut=1,p.cut=0.05,
                                label.diff_pct = T,

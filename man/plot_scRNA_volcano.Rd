@@ -11,6 +11,8 @@ plot_scRNA_volcano(
   label.text.size = 80,
   logfc.cut = 1,
   p.cut = 0.05,
+  label.diff_pct = T,
+  diff_pct.cutoff = 0.4,
   label_postion_x_left = -2.5,
   label_postion_x_right = 2.5,
   label_postion_y = 0.1,
@@ -26,7 +28,27 @@ plot_scRNA_volcano(
 
 \item{plot.gene.number}{The default will display the top 5 up and down regulated genes}
 
-\item{label.text.size}{The size of the gene, default is 10}
+\item{label.text.size}{The size of the gene, default is 80}
+
+\item{logfc.cut}{The threshold of the locfc, the default is 1}
+
+\item{p.cut}{The threshold of the pvalue, the default is 0.05}
+
+\item{label.diff_pct}{Whether to use the pct.1 - pct.2 (diff_pct) as the label}
+
+\item{diff_pct.cutoff}{The diff_pct threshold}
+
+\item{label_postion_x_left}{The axis x position of the label in left}
+
+\item{label_postion_x_right}{The axis x position of the label in right}
+
+\item{label_postion_y}{The axis y position}
+
+\item{base_size}{The text size, the default is 14}
+
+\item{legend_size}{The legend size, the default is 14}
+
+\item{legend_position}{The legend position, the default is 'top'}
 }
 \description{
 Title plot_scRNA_volcano
