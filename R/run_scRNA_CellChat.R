@@ -1,16 +1,19 @@
 #' Title run_scRNA_CellChat
 #'
-#' @param scRNA A seurat object
+#' @param data A seurat object
 #' @param idents It is what group you focus on to calculate the interactions, the default is 'celltype'
 #' @param save_path The path you want to save, the the default is './'
 #' @param save_name The file name you want to save, the the default is 'CellChat_res.Rdata'
+#' @param CellChat_DB 'CellChatDB.human' or 'CellChatDB.mouse', the default is 'CellChatDB.human'
+#' @param
+#' @param
 #'
 #' @return
 #' @export
 #'
 #' @examples run_scRNA_CellChat(scRNA = scRNA_chat,idents = 'celltype',save_path = './output_data/',save_name = 'CellChat.Rdata')
 
-run_scRNA_CellChat <- function(scRNA, idents = 'celltype',
+run_scRNA_CellChat <- function(data, idents = 'celltype',
                                save_path = NULL, save_name = NULL,
                                CellChat_DB = NULL) {
 

@@ -5,7 +5,7 @@
 \title{Title run_scRNA_CellChat}
 \usage{
 run_scRNA_CellChat(
-  scRNA,
+  data,
   idents = "celltype",
   save_path = NULL,
   save_name = NULL,
@@ -13,13 +13,15 @@ run_scRNA_CellChat(
 )
 }
 \arguments{
-\item{scRNA}{A seurat object}
+\item{data}{A seurat object}
 
 \item{idents}{It is what group you focus on to calculate the interactions, the default is 'celltype'}
 
 \item{save_path}{The path you want to save, the the default is './'}
 
 \item{save_name}{The file name you want to save, the the default is 'CellChat_res.Rdata'}
+
+\item{CellChat_DB}{'CellChatDB.human' or 'CellChatDB.mouse', the default is 'CellChatDB.human'}
 }
 \description{
 Title run_scRNA_CellChat
