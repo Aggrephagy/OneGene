@@ -22,7 +22,7 @@ run_scRNA_CellChat <- function(scRNA, idents = 'celltype',
     install.packages("tidyverse", ask = FALSE, suppressUpdates = TRUE)
   }
   library(future)
-  plan(multisession,workers = 10)
+  future::plan("multiprocess", workers = 12)
   message(paste0('==> ----------',nbrOfWorkers(),' cores will be used !'))
 
 
