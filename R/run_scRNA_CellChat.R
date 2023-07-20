@@ -31,7 +31,7 @@ run_scRNA_CellChat <- function(data, idents = 'celltype',
 
 
   # 数据准备
-  scRNA_chat <- scRNA
+  scRNA_chat <- data
   Idents(scRNA_chat) <- idents
   meta <- scRNA_chat@meta.data
   data_input <- as.matrix(scRNA_chat@assays$RNA@data)
