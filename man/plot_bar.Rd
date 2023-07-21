@@ -11,8 +11,14 @@ plot_bar(
   values = NULL,
   compare_list = NULL,
   signif.method = "t.test",
+  legend_position = "right",
+  plot_line = F,
+  plot.title = NULL,
+  x.title = NULL,
+  y.title = NULL,
   signif.position.y,
-  pal = NULL
+  pal = NULL,
+  map_signif = T
 )
 }
 \arguments{

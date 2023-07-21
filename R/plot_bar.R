@@ -16,7 +16,11 @@
 #'
 plot_bar <- function(data,Group1=NULL,Group2=NULL,values=NULL,
                      compare_list=NULL,signif.method='t.test',
-                     signif.position.y,pal = NULL ) {
+                     legend_position = 'right',plot_line = F,
+                     plot.title = NULL,x.title = NULL,y.title = NULL,
+                     signif.position.y,pal = NULL,map_signif = T ) {
+  library(ggplot2);library(tidyverse);library(ggrepel);library(ggprism)
+
   group_1 <- Group1
   group_2 <- Group2
   values <- values
@@ -61,29 +65,73 @@ plot_bar <- function(data,Group1=NULL,Group2=NULL,values=NULL,
                          max(df$value)+max(df$value)*0.4)
 
   # --------------4.绘图---------------------------
-  p <- ggplot(df,aes(group1,value,fill=group1))+
-    geom_bar(stat="summary",fun=mean,position="dodge")+ #绘制柱状图
-    stat_summary(geom = "errorbar",fun.data = 'mean_sd', width = 0.3)+#误差棒
-    labs(x="Samples",y=NULL)+#标题
-    theme_prism(palette = "candy_bright",
-                base_fontface = "bold", # 字体样式，可选 bold, plain, italic
-                base_family = "Arial", # 字体格式，可选 serif, sans, mono, Arial等
-                base_size = 16,  # 图形的字体大小
-                base_line_size = 0.8, # 坐标轴的粗细
-                axis_text_angle = 45)+ # 可选值有 0，45，90，270
-    scale_fill_manual(values = pal)+
-    geom_signif(comparisons = compare_list,
-                map_signif_level = T, #是否使用星号显示
-                test = signif.method, ##计算方法
-                y_position = signif.position.y,#图中横线位置设置
-                tip_length = c(c(0.01,0.01),
-                               c(0.01,0.01),
-                               c(0.01,0.01)),#横线下方的竖线设置
-                size=0.8,color="black")+
-    geom_jitter(data=df,aes(group1,value),size=2,pch=20,color="black")
+  # 重新映射数据
+  plot_subdata <- df %>% group_by(group1) %>%
+    summarise(across(.cols = value, mean))
+
+  if (plot_line == F) {
+    p <- ggplot(df,aes(group1,value,fill=group1,color = group1))+
+      geom_bar(stat="summary",fun=mean,position="dodge")+ #绘制柱状图
+      stat_summary(geom = "errorbar",fun.data = 'mean_sd', width = 0.3)+#误差棒
+      labs(title = plot.title, x=x.title,y=y.title)+#标题
+      theme_prism(palette = "candy_bright",
+                  base_fontface = "bold", # 字体样式，可选 bold, plain, italic
+                  base_family = "Arial", # 字体格式，可选 serif, sans, mono, Arial等
+                  base_size = 16,  # 图形的字体大小
+                  base_line_size = 0.8, # 坐标轴的粗细
+                  axis_text_angle = 45)+ # 可选值有 0，45，90，270
+      scale_fill_manual(values = pal)+
+      scale_color_manual(values = rep('black',100))+
+      theme(text = element_text(size = 14,family = 'Arial',face = 'bold'),
+            legend.position = legend_position)+
+      geom_signif(comparisons = compare_list,
+                  map_signif_level = map_signif , #是否使用星号显示
+                  test = signif.method, ##计算方法
+                  y_position = signif.position.y,#图中横线位置设置
+                  tip_length = c(c(0.01,0.01),
+                                 c(0.01,0.01),
+                                 c(0.01,0.01)),#横线下方的竖线设置
+                  size=0.8,color="black")+
+      geom_jitter(data=df,aes(group1,value),size=2,pch=20,color="black")
+  } else {
+    p <- ggplot(df, aes(x = group1, y = value, fill = group1,color = group1)) +
+      # 绘制均值点
+      geom_point(stat = 'summary', fun = 'mean') +
+      # 绘制均值条形图
+      geom_bar(stat = 'summary', fun = 'mean') +
+      # 绘制抖动点图
+      geom_jitter(size=2,pch=20,color="black",alpha=0.8)+
+      # 绘制均值的误差线
+      stat_summary(fun.data = 'mean_sd', geom = 'errorbar', width = 0.1) +
+      # 绘制分组的虚线
+      geom_line(data=plot_subdata, aes(x=group1,  y=value,group =1),lty=2,
+                inherit.aes = F)+
+      labs(title = plot.title, x=x.title,y=y.title)+#标题
+      theme_prism(palette = "candy_bright",
+                  base_fontface = "bold", # 字体样式，可选 bold, plain, italic
+                  base_family = "Arial", # 字体格式，可选 serif, sans, mono, Arial等
+                  base_size = 16,  # 图形的字体大小
+                  base_line_size = 0.8, # 坐标轴的粗细
+                  axis_text_angle = 45)+ # 可选值有 0，45，90，270
+      scale_fill_manual(values = pal)+
+      scale_color_manual(values = rep('black',100))+
+      theme(text = element_text(size = 14,family = 'Arial',face = 'bold'),
+            legend.position = legend_position)+
+      geom_signif(comparisons = compare_list,
+                  map_signif_level = map_signif , #是否使用星号显示
+                  test = signif.method, ##计算方法
+                  y_position = signif.position.y,#图中横线位置设置
+                  tip_length = c(c(0.01,0.01),
+                                 c(0.01,0.01),
+                                 c(0.01,0.01)),#横线下方的竖线设置
+                  size=0.8,color="black")
+  }
+
 
   if (is.null(group_2)) {
     plot(p)
+  } else if( plot_line == T){
+    message('===> ====Error!==== -----Only One Group supported plot_line !-----')
   } else {
     p + facet_grid(~group2,scales = 'free')
   }
