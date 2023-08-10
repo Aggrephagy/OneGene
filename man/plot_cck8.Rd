@@ -8,6 +8,7 @@ plot_cck8(
   data = NULL,
   time,
   groups,
+  clean = F,
   plot_title = "CCK8 assay",
   x_title = "time",
   y_title = "OD450",
@@ -23,6 +24,8 @@ plot_cck8(
 \item{time}{The x.axis to plot, it alse can be the drug concentration.}
 
 \item{groups}{A vector contains all groups in your experiment.}
+
+\item{clean}{Whether the data is clean.}
 
 \item{plot_title}{The title to plot.}
 

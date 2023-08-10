@@ -46,7 +46,7 @@ download_xena <- function(project,data_type = 'counts') {
     exp <- dataset %>%
       XenaFilter(filterDatasets = dataset@datasets[str_detect(dataset@datasets,data_type)]) %>% # 筛选数据集
       XenaQuery() %>% # 查询
-      XenaDownload() %>% # 下载
+      XenaDownload(method = "libcurl") %>% # 下载
       XenaPrepare() # 整理
 
     # 下载临床数据
