@@ -2,8 +2,8 @@
     "sortOrder": [
         {
             "columnIndex": 2,
-            "ascending": false
+            "ascending": true
         }
     ],
-    "path": "~/Xiapeng_files/OneGene/R"
+    "path": "~/Xiapeng_files/OneGene/output_xena"
 }

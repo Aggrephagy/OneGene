@@ -4,7 +4,7 @@
 \alias{download_xena}
 \title{Title download_xena}
 \usage{
-download_xena(project, data_type = "counts")
+download_xena(project, data_type = NULL)
 }
 \arguments{
 \item{data_type}{}
